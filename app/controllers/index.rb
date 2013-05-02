@@ -63,13 +63,10 @@ erb :edit_skills
 end 
 
 post '/edit_skills' do
-  p params
   @user = User.find(session[:user_id])
   @skill = Skill.find_or_create_by_name(name: params[:name], context: params[:context])
   @user.skills << @skill
   proficiency = @user.proficiencies.last
   proficiency.update_attributes(formal: params[:formal], years: params[:years])
-
-@message = "You have successfully updated your skills!" 
 redirect '/'
 end
