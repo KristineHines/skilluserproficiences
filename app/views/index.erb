@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>User Skills and Levels</h1>
+  <% if @users %>
+  <ul>
+  <% @users.each do |user| %>
+    <li><%= user.name %>
+    </li><% user.proficiencies.each do |proficiency| %>
+      <li>Skill: <%=proficiency.skill.name %>(<%=proficiency.skill.context %>)<br>
+        Formal?: <%= proficiency.formal%><br>Years: <%=proficiency.years%></li><br><br>
+    <%end%>
+  <%end%> 
+  </ul>
+  <%end%>
+
+  <%# TODO: display the skills and proficiency levels for each user ... %>
+  <% if session[:user_id] %>
+   <a href="/edit_skills">Edit Skills</a>
+  <% end %>
+ <!--  <%=@message %> -->
+</div>
